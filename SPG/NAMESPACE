@@ -1,0 +1,6 @@
+export(def.grav, def.pump, take.samples)
+S3method(print, grav)
+S3method(print, pump)
+S3method(print, samples)
+S3method(plot, flow)
+S3method(plot, samples)
