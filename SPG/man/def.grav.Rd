@@ -101,17 +101,22 @@ def.grav(population, frac.consumers=NULL, exp.n.pulses=NULL,
   and a distribution of distances is calculated with mean=value and sd=0.25*value (n=1000). 
   
   The average flow velocity can vary depending on the design of the sewers and the prevalent topography.
-  To avoid the accumulation of sediments a minimum velocity is often tried to be achieved by design. 
-  The default value for calculations is 1m/s (0.2-2m/s ***verify range + ref***). Slower velocities will lead 
-  to longer travel times and higher dispersion and hence more attenuated short-term fluctuations of a 
-  substance.
+  To avoid the accumulation of sediments a minimum velocity is often tried to be achieved by design (e.g. 
+  a diameter dependent range of 0.6m/s-1m/s can be found in the Swiss design standards SIA V 190, 1993). 
+  The default value for calculations is 1m/s. Slower velocities will lead to longer travel times and 
+  higher dispersion and hence more attenuated short-term fluctuations of a substance.
   
-  While dispersion coefficients can vary (0.03-1m^2/s ***verify range + ref***) within and between sewer systems, their
-  effect on the result (short-term variations and sampling) is not as sensitive as velocity, flow distance and 
-  initial pulse duration (see next paragraph). A default value of 0.16 m^2/s is a value that was derived from 
-  investigations summarized in Rieckermann et al. (2005).  
+  While dispersion coefficients can vary (80%-interquantile determined from 60 data sets in Rieckermann 
+  et al. (2005) is 0.05-0.36m^2/s) within and between sewer systems, their effect on the result (short-term 
+  variations and sampling) is not as sensitive as velocity, flow distance and initial pulse duration. A 
+  default value of 0.16 m^2/s is a value that was derived from investigations summarized in Rieckermann 
+  et al. (2005).  
 
-  
+  The pulse duration at the source is defined as the time over which a wastewater flush (e.g. toilet) extends
+  where flowing from the house connection into the public sewer. While a toilet flush in the house lasts 
+  approximately 5-10 seconds, it can span over a longer time depending on the length and characteristics of the 
+  house connection. Therefore, the defaul values for min and max initial pulse duration are selected to cover a 
+  fairly wide range: 5-95 seconds (single standard deviation of the pulse, a pulse is assumed to be shaped Gaussian).
   
 
   For an example see the documentation of \code{\link{SPG-package}}.
