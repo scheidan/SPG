@@ -16,7 +16,7 @@
     Package: \tab SPG\cr
     Type: \tab Package\cr
     Version: \tab 1.0\cr
-    Date: \tab 2013-08-15\cr
+    Date: \tab 2014-02-05\cr
     License: \tab GPL-2\cr
   }
 
@@ -38,6 +38,8 @@
   different sampling strategies.
   
   For details see links to individual functions below.
+
+  The source code of the latest version can be found on \href{https://github.com/scheidan/SPG}{https://github.com/scheidan/SPG}. Pull requests are welcome!
   
 
 }

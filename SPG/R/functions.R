@@ -7,7 +7,7 @@
 ## File: functions.R
 ## Path: q:/Abteilungsprojekte/Eng/SWWData/Illicit_Drugs_Verantwortung_C_Ort/Pumps/Package/
 ##
-## August  8, 2013 -- Andreas Scheidegger, Christoph Ort
+## February  5, 2014 -- Andreas Scheidegger, Christoph Ort
 ##
 ## andreas.scheidegger@eawag.ch
 ## =======================================================
@@ -156,11 +156,12 @@ gen.S <- function(t.sim, exp.n.pulses.WD, pattern.WD=1,
     ## ----------------------
     ## model dispersion and pulse mass
 
-    ## approximate dnorm() for faster execution
-    dnorm.approx <- approxfun(seq(-6, 6, length=1000), dnorm(seq(-6, 6, length=1000)),
-                              yleft=0, yright=0)
+    ## approximate pnorm(x,0,1) for faster execution
+    pnorm.approx <- approxfun(seq(-6, 6, length=1000), pnorm(seq(-6, 6, length=1000)),
+                              yleft=0, yright=1)
 
     pattern <- rep(0, t.sim/temp.res.sim)
+    times <- seq(temp.res.sim, t.sim, length=t.sim/temp.res.sim)
     for(t in which(n.pulses>0)) {
         ## sample initial pulse width
         pulse.dur <- runif(n.pulses[t], pulse.dur.min, pulse.dur.max)
@@ -177,9 +178,9 @@ gen.S <- function(t.sim, exp.n.pulses.WD, pattern.WD=1,
 
         for(i in 1:n.pulses[t]) {
             pattern <- pattern +
-                                        #dnorm(seq(1, t.sim, length=t.sim/temp.res.sim), t.peak[i], pulse.sd[i])*pulse.mass[i]
-                dnorm.approx((seq(1, t.sim, length=t.sim/temp.res.sim)-t.peak[i])/pulse.sd[i])/pulse.sd[i]*pulse.mass[i]
-        }
+              ## c(0, diff(pnorm(times, t.peak[i], pulse.sd[i]))*pulse.mass[i])/temp.res.sim
+              c(0, diff(pnorm.approx((times-t.peak[i])/pulse.sd[i]))*pulse.mass[i])/temp.res.sim
+          }
     }
     return(pattern)
 }

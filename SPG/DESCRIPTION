@@ -1,8 +1,8 @@
 Package: SPG
 Type: Package
 Title: Sewer Pattern Generator
-Version: 1.0
-Date: 2013-08-15
+Version: 1.0.1
+Date: 2014-02-05
 Author: Andreas Scheidegger, Christoph Ort
 Maintainer: Andreas Scheidegger <andreas.scheidegger@eawag.ch>
 Description: A package to generate realistic patterns of substances in sewer systems to compare and optimize different sampling schemes.
