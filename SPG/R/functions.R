@@ -282,6 +282,8 @@ disp.trans <- function(flow, distance, v.flow=1, Disp=0.16) {
 
     Resp <- dgamma(seq(0, t.sim-1, temp.res.sim)-delay, scale=scale, shape=shape)*temp.res.sim
 
+    Resp <- Resp/sum(Resp)              # normlize due to discretion error
+
     ## convolute inputs with Resp
 
     Q.in <- flow[,1]
