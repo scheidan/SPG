@@ -1,7 +1,7 @@
 # Sewage pattern generator (SPG)
 
 R-package that provides functions to generate flow and substance patterns
-  in complex sewer systems. 
+  in complex sewer systems.
 
 The main aim is to efficiently model realistic short-term variations
   of flows and substances in sewers and to assess their effect on
@@ -15,3 +15,17 @@ The main aim is to efficiently model realistic short-term variations
   sub-catchments) and sampling setups can be evaluated at relatively
   low compuational cost. The processes advection and dispersion are
   considered.
+
+## Installation
+
+1. Install [R](https://cloud.r-project.org/) and [R-Studio](https://www.rstudio.com/products/RStudio/) or any other editor.
+
+2. Install `devtools` (type in the R command line)
+```
+install.packages("devtools")
+```
+
+3. Install `SPG` (type in the R command line)
+```
+library(devtools)
+install_github("scheidan/SPG/SPG")
