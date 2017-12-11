@@ -203,9 +203,10 @@ pump.trans <- function(flow, V.max, V.min=0, pump.rate) {
     temp.res.sim <- attr(flow, "temp.res.sim")
 
     ## V = Volume of water in 'tank'
-    V <- rep(0, nrow(flow))
+    V <- rep(0, nrow(flow) + 1)
+
     ## S = mass of substance in 'tank'
-    S <- rep(0, nrow(flow))
+    S <- rep(0, nrow(flow) + 1)
 
     ## water flow out of pump
     Q.out <- rep(0, nrow(flow))
@@ -215,7 +216,7 @@ pump.trans <- function(flow, V.max, V.min=0, pump.rate) {
     ## state of pump
     state <- 'off'
     ## mass balances
-    for(t in 2:nrow(flow)) {
+    for(t in 2 : (nrow(flow) + 1)) {
         ## switch pump 'on' if volume is larger than V.max
         if(V[t-1] > V.max) {
             state <- 'on'
@@ -251,7 +252,7 @@ pump.trans <- function(flow, V.max, V.min=0, pump.rate) {
     dimnames(flow.out) <- dimnames(flow)
     class(flow.out) <- "flow"
     attr(flow.out, "temp.res.sim") <- temp.res.sim # store resolution as attribute
-
+    attr(flow.out, "V.sump.left") <- V[t] # store volume left in a pum sump as attribute
     return(flow.out)
 
 }
